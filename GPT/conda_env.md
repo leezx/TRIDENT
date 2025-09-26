@@ -23,6 +23,9 @@ pip install dgl==2.1.0  # 默认安装 CPU 版本
 # 安装 RDKit
 conda install -c conda-forge rdkit -y
 
+# if error, use this code
+pip install --only-binary :all: pyarrow
+
 # 安装 HuggingFace Transformers & Diffusers
 pip install transformers==4.42.0 datasets==2.20.0 accelerate==0.32.0 diffusers==0.29.0
 
