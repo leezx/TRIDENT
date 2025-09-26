@@ -1,6 +1,10 @@
 
-# Protacdb3
-For DeepPROTACs
+# Protacdb3 
+
+# DeepPROTACs
+
+# PROTAC-RL
+# PROTAC-INVENT
 
 # DiffPROTACs
 - DiffPROTACs generated 2813 PROTACs with sdf files
@@ -25,6 +29,8 @@ zenodo_get 15797310
 - data
 - data_process
 - graph_data-002
+
+# DeepTernary
 
 # PDB
 # ChEMBL
