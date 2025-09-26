@@ -12,13 +12,23 @@ huggingface-cli download zpn/zinc20 --repo-type dataset --local-dir ./zinc20
 https://github.com/learningmatter-mit/geom
 
 # PROTAC-Splitter
+- smiles files and graphs files
+- Transformer model files
 ```
 zenodo_get 15797310
 ```
 
 # DeepPSA
+- data
+- data_process
+- graph_data-002
 
 # DiffPROTACs
+- DiffPROTACs generated 2813 PROTACs with sdf files
+
+# PDB
+# ChEMBL
+# bindingdb
 
 GPT:
 - 对于任务 1：项目环境和数据准备，详细解释我具体需要下载哪些数据？每一个数据的内容是什么？我需要用它来干什么？通俗解释。
