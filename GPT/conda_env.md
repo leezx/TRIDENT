@@ -3,6 +3,8 @@ GPT:
 - 写一个命令，用conda创建环境。建立 Python 环境（推荐 conda，安装 PyTorch、PyTorch Geometric/DGL、RDKit、HuggingFace）
 - 我会在cpu服务器上测试代码，然后去GPU服务器训练，所以先给我来一个CPU版本的
 
+## CPU
+
 ```
 # 创建并激活环境
 conda create -n trident python=3.10 -y
@@ -26,4 +28,53 @@ pip install transformers==4.42.0 datasets==2.20.0 accelerate==0.32.0 diffusers==
 
 # 常用依赖
 pip install scikit-learn pandas matplotlib seaborn tqdm jupyterlab
+```
+
+## GPU
+
+```
+# 先加载 CUDA 模块（HPC 集群必需）
+module load cuda/12.8
+
+# 创建并激活环境
+conda create -n trident python=3.10 -y
+conda activate trident
+
+# -------------------------
+# 1. 安装 PyTorch (CUDA 12.1 版，兼容 CUDA 12.8 驱动)
+# -------------------------
+pip install torch==2.2.0+cu121 torchvision==0.17.0+cu121 torchaudio==2.2.0+cu121 \
+  --extra-index-url https://download.pytorch.org/whl/cu121
+
+# -------------------------
+# 2. 安装 PyTorch Geometric (PyG)
+# -------------------------
+pip install torch-geometric==2.5.3
+pip install pyg-lib torch-scatter torch-sparse torch-cluster torch-spline-conv \
+  -f https://data.pyg.org/whl/torch-2.2.0+cu121.html
+
+# -------------------------
+# 3. 安装 DGL (Deep Graph Library, GPU build)
+# -------------------------
+pip install dgl -f https://data.dgl.ai/wheels/cu121/repo.html
+
+# -------------------------
+# 4. 安装 RDKit (用 conda-forge)
+# -------------------------
+conda install -c conda-forge rdkit -y
+
+# -------------------------
+# 5. 安装 HuggingFace & Diffusion 模型工具
+# -------------------------
+pip install transformers==4.42.0 datasets==2.20.0 accelerate==0.32.0 diffusers==0.29.0
+
+# -------------------------
+# 6. 常用工具包
+# -------------------------
+pip install scikit-learn pandas matplotlib seaborn tqdm jupyterlab
+```
+
+check
+```
+python -c "import torch; print(torch.version.cuda); print(torch.cuda.is_available())"
 ```
